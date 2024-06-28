@@ -3,6 +3,22 @@ import pandas as pd
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
+""" SQL:
+- Creación de una base de datos llamada mopc
+- Importación de los archivos CSV
+- Actualización de los clientes AMEX Y HSBC:
+UPDATE pagos_unificados
+SET IDCLIENTE = 'AMEX'
+WHERE descripcion LIKE 'AMEX%'
+
+UPDATE pagos_unificados
+SET IDCLIENTE = 'HSBC'
+WHERE descripcion LIKE 'HSBC%'
+
+Lo mismo para periodos_tableros
+
+"""
+
 # Conexión a la base de datos
 
 db = mysql.connector.connect(
@@ -57,8 +73,6 @@ try:
 
 except:
     print("Error al obtener los datos de la vista")
-
-
 
 
 
